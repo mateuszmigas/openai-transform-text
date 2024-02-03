@@ -1,0 +1,70 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "openai-transform-text",
+  "title": "OpenAI Transform Text",
+  "description": "Allows to transform selected text based on user prompt and paste it back.",
+  "icon": "command-icon.png",
+  "author": "mateuszmigas",
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "OpenAI Transform Text",
+      "description": "Setup variables for OpenAI and transform selected text based on user prompt.",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "openAiApiKey",
+          "title": "OpenAI API Key",
+          "description": "API Key for OpenAI",
+          "type": "password",
+          "required": true
+        },
+        {
+          "name": "openAiPrompt",
+          "title": "OpenAI Prompt",
+          "description": "Prompt to use for text transformation",
+          "type": "textfield",
+          "required": false
+        },
+        {
+          "name": "openAiModel",
+          "title": "OpenAI Model",
+          "description": "Model to use for text transformation",
+          "type": "dropdown",
+          "data": [
+            {
+              "title": "gpt-3.5-turbo",
+              "value": "gpt-3.5-turbo"
+            }
+          ],
+          "default": "gpt-3.5-turbo",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.66.2",
+    "@raycast/utils": "^1.12.0",
+    "openai": "^4.26.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/react": "18.2.27",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
