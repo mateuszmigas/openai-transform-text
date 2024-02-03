@@ -1,5 +1,5 @@
 # OpenAI Transform Text
-![Raycast](https://raycast.com/) extension for transforming selected text from active application with OpenAI.
+[Raycast](https://raycast.com/) extension for transforming selected text from active application with OpenAI.
 
 ### Configuration
 Please go to the extension settings in Raycast and set the following:
