@@ -18,9 +18,9 @@ type Preferences = { openAiApiKey: string; openAiPrompt: string; openAiModel: st
 type ResponseData = {
   transformedText: string;
   elapsedTime: number;
-  prompt_tokens?: number;
-  completion_tokens?: number;
-  total_tokens?: number;
+  promptTokens?: number;
+  completionTokens?: number;
+  totalTokens?: number;
 };
 const defaultPrompt = `Please generate a text that corrects any spelling and grammatical errors in the provided input. The revised text should maintain the original meaning and context but with improved readability and proper sentence structure. Ensure that all misspelled words are corrected, punctuation is appropriately used, and the text flows naturally, adhering to standard English language conventions. Output should be in the same language as the input.`;
 const defaultModel = "gpt-3.5-turbo";
@@ -53,9 +53,9 @@ export default function Command() {
       const responseData: ResponseData = {
         transformedText: completion.choices[0].message.content ?? "",
         elapsedTime: performance.now() - startTime,
-        prompt_tokens: completion.usage?.prompt_tokens,
-        completion_tokens: completion.usage?.completion_tokens,
-        total_tokens: completion.usage?.total_tokens,
+        promptTokens: completion.usage?.prompt_tokens,
+        completionTokens: completion.usage?.completion_tokens,
+        totalTokens: completion.usage?.total_tokens,
       };
 
       return {
@@ -103,12 +103,12 @@ export default function Command() {
                   data?.responseData?.elapsedTime ? `${(data.responseData.elapsedTime / 1000).toFixed(2)}s` : undefined
                 }
               />
-              <Detail.Metadata.Label title="Prompt Tokens" text={data?.responseData?.prompt_tokens?.toLocaleString()} />
+              <Detail.Metadata.Label title="Prompt Tokens" text={data?.responseData?.promptTokens?.toLocaleString()} />
               <Detail.Metadata.Label
                 title="Completion Tokens"
-                text={data?.responseData?.completion_tokens?.toLocaleString()}
+                text={data?.responseData?.completionTokens?.toLocaleString()}
               />
-              <Detail.Metadata.Label title="Total Tokens" text={data?.responseData?.total_tokens?.toLocaleString()} />
+              <Detail.Metadata.Label title="Total Tokens" text={data?.responseData?.totalTokens?.toLocaleString()} />
             </>
           )}
         </Detail.Metadata>
